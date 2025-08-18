@@ -28,10 +28,10 @@ class _HidderdrawerWidgetState extends State<HidderdrawerWidget> {
 
   final List<IconData> iconData = [
     Icons.home,
-    Icons.man,
+    Icons.person,
     Icons.location_on_outlined,
     Icons.bookmark_outline,
-    Icons.notifications,
+    Icons.notifications_outlined,
     Icons.message_outlined,
     Icons.settings_outlined,
     Icons.help_outline,
@@ -96,12 +96,39 @@ class _HidderdrawerWidgetState extends State<HidderdrawerWidget> {
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Icon(
-                                    iconData[index],
-                                    color: selected
-                                        ? Colors.blue
-                                        : Colors.white,
-                                  ),
+                                  // Stack for Notification and Message badges
+                                  if (titleName[index] == "Notification" ||
+                                      titleName[index] == "Message")
+                                    Stack(
+                                      children: [
+                                        Icon(
+                                          iconData[index],
+                                          color: selected
+                                              ? Colors.blue
+                                              : Colors.white,
+                                        ),
+                                        Positioned(
+                                          right: 2,
+                                          top: 0,
+                                          child: Container(
+                                            height: 8,
+                                            width: 8,
+                                            decoration: BoxDecoration(
+                                              color: Colors.red,
+                                              borderRadius:
+                                                  BorderRadius.circular(20),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  else
+                                    Icon(
+                                      iconData[index],
+                                      color: selected
+                                          ? Colors.blue
+                                          : Colors.white,
+                                    ),
                                   const SizedBox(width: 10),
                                   Text(
                                     titleName[index],
@@ -123,12 +150,7 @@ class _HidderdrawerWidgetState extends State<HidderdrawerWidget> {
                         // Divider after every 3 buttons
                         if ((index + 1) % 3 == 0 &&
                             index != titleName.length - 1)
-                          const Divider(
-                            color: Colors.white70,
-                            thickness: 1,
-                            indent: 0,
-                            endIndent: 20,
-                          ),
+                          const Divider(color: Colors.white70, thickness: 1),
                       ],
                     );
                   }),
