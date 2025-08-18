@@ -113,14 +113,15 @@ class Housedescription extends StatelessWidget {
                     children: [
                       Text("Price", style: TextStyle(color: Colors.grey)),
                       Text(
-                        "Rp 2.500,000.000 / year",
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        "Rp 2.500,000.000 / Year",
+
+                        style: TextStyle(fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
                   Container(
                     height: 40,
-                    width: 100,
+                    width: 120,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.blue,
@@ -131,6 +132,7 @@ class Housedescription extends StatelessWidget {
                         child: Text(
                           "Rent Now ",
                           style: TextStyle(
+                            fontSize: 16,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
