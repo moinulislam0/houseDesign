@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:house_design/views/homePages.dart';
 
@@ -78,19 +76,19 @@ class _HidderdrawerWidgetState extends State<HidderdrawerWidget> {
                             },
                             borderRadius: BorderRadius.circular(15),
                             child: Container(
-                              width: 170,
+                              width: 190,
                               height: 50,
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 8,
+                                horizontal: 30,
+                                vertical: 16,
                               ),
                               decoration: BoxDecoration(
                                 color: selected
                                     ? Colors.white
                                     : Colors.transparent,
                                 borderRadius: const BorderRadius.only(
-                                  topRight: Radius.circular(10),
-                                  bottomRight: Radius.circular(10),
+                                  topRight: Radius.circular(20),
+                                  bottomRight: Radius.circular(20),
                                 ),
                               ),
                               child: Row(
@@ -136,9 +134,7 @@ class _HidderdrawerWidgetState extends State<HidderdrawerWidget> {
                                       color: selected
                                           ? Colors.blue
                                           : Colors.white,
-                                      fontWeight: selected
-                                          ? FontWeight.bold
-                                          : FontWeight.normal,
+                                      fontWeight: FontWeight.w500,
                                       fontSize: 16,
                                     ),
                                   ),
@@ -150,7 +146,10 @@ class _HidderdrawerWidgetState extends State<HidderdrawerWidget> {
                         // Divider after every 3 buttons
                         if ((index + 1) % 3 == 0 &&
                             index != titleName.length - 1)
-                          const Divider(color: Colors.white70, thickness: 1),
+                          SizedBox(
+                            width: 180,
+                            child: const Divider(color: Colors.white),
+                          ),
                       ],
                     );
                   }),
@@ -166,17 +165,15 @@ class _HidderdrawerWidgetState extends State<HidderdrawerWidget> {
             builder: (_, double val, __) {
               return Transform(
                 alignment: Alignment.center,
-                transform: Matrix4.identity()
-                  ..setEntry(3, 2, 0.001)
-                  ..setEntry(0, 3, 200 * val)
-                  ..rotateY((pi / 100) * val),
+                transform: Matrix4.identity()..setEntry(0, 3, 200 * val),
+
                 child: AbsorbPointer(
                   absorbing: value != 0,
                   child: Container(
                     margin: EdgeInsets.only(
-                      top: 80 * val,
-                      left: 20 * val,
-                      bottom: 70 * val,
+                      top: 50 * val,
+                      left: 50 * val,
+                      bottom: 50 * val,
                     ),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10 * val),
